@@ -1,0 +1,10 @@
+Already up to date.
+Traceback (most recent call last):
+  File "/Users/ogurakazuki/poster-map/csv2json_small.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Already up to date.
+Traceback (most recent call last):
+  File "/Users/ogurakazuki/poster-map/csv2json_small.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'

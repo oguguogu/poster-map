@@ -1,7 +1,9 @@
 #!/bin/env bash
 set -euo pipefail
 
-cd ~/tokyo2024-poster-map/ #Path to the folder
+source ~/poster-map/venv/bin/activate
+
+cd ~/poster-map/ #Path to the folder
 
 git pull
 
