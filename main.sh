@@ -1,7 +1,7 @@
 #!/bin/env bash
 set -euo pipefail
 
-source ~/poster-map/venv/bin/activate
+source ~/poster-map/venv/bin/activate  # 仮想環境を有効化
 
 cd ~/poster-map/ #Path to the folder
 
@@ -26,6 +26,6 @@ then
     git add .
     git commit -m "Update"
     git push
-    source .env
+    #source .env
     npx netlify-cli deploy --prod --message "Deploy" --dir=./public --auth $NETLIFY_AUTH_TOKEN
 fi
