@@ -85,7 +85,7 @@ Promise.all([getAreaList(), getProgress(), getProgressCountdown()]).then(functio
 
   for (let [key, areaInfo] of Object.entries(areaList)) {
     console.log(areaInfo['area_name']);
-    fetch(`https://uedayou.net/loa/東京都${areaInfo['area_name']}.geojson`)
+    fetch(`https://uedayou.net/loa/東京都世田谷区${areaInfo['area_name']}.geojson`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to fetch geojson for ${areaInfo['area_name']}`);

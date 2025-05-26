@@ -1,250 +1,230 @@
 {
     "1": {
-        "area_name": "台東区",
+        "area_name": "宇奈根",
         "area_block": "23区東部"
     },
     "2": {
-        "area_name": "墨田区",
+        "area_name": "羽根木",
         "area_block": "23区東部"
     },
     "3": {
-        "area_name": "江東区",
+        "area_name": "奥沢",
         "area_block": "23区東部"
     },
     "4": {
-        "area_name": "足立区",
+        "area_name": "岡本",
         "area_block": "23区東部"
     },
     "5": {
-        "area_name": "江戸川区",
+        "area_name": "下馬",
         "area_block": "23区東部"
     },
     "6": {
-        "area_name": "葛飾区",
+        "area_name": "鎌田",
         "area_block": "23区東部"
     },
     "7": {
-        "area_name": "荒川区",
+        "area_name": "喜多見",
         "area_block": "23区東部"
     },
     "8": {
-        "area_name": "品川区",
+        "area_name": "砧",
         "area_block": "23区西部"
     },
     "9": {
-        "area_name": "目黒区",
+        "area_name": "砧公園",
         "area_block": "23区西部"
     },
     "10": {
-        "area_name": "大田区",
+        "area_name": "宮坂",
         "area_block": "23区西部"
     },
     "11": {
-        "area_name": "世田谷区",
+        "area_name": "給田",
         "area_block": "23区西部"
     },
     "12": {
-        "area_name": "中野区",
+        "area_name": "玉川",
         "area_block": "23区西部"
     },
     "13": {
-        "area_name": "杉並区",
+        "area_name": "玉川台",
         "area_block": "23区西部"
     },
     "14": {
-        "area_name": "練馬区",
+        "area_name": "玉川田園調布",
         "area_block": "23区西部"
     },
     "15": {
-        "area_name": "板橋区",
+        "area_name": "玉堤",
         "area_block": "23区西部"
     },
     "16": {
-        "area_name": "北区",
+        "area_name": "駒沢",
         "area_block": "23区西部"
     },
     "17": {
-        "area_name": "千代田区",
+        "area_name": "駒沢公園",
         "area_block": "23区都心部"
     },
     "18": {
-        "area_name": "中央区",
+        "area_name": "経堂",
         "area_block": "23区都心部"
     },
     "19": {
-        "area_name": "港区",
+        "area_name": "弦巻",
         "area_block": "23区都心部"
     },
     "20": {
-        "area_name": "新宿区",
+        "area_name": "豪徳寺",
         "area_block": "23区都心部"
     },
     "21": {
-        "area_name": "文京区",
+        "area_name": "桜",
         "area_block": "23区都心部"
     },
     "22": {
-        "area_name": "渋谷区",
+        "area_name": "桜丘",
         "area_block": "23区都心部"
     },
     "23": {
-        "area_name": "豊島区",
+        "area_name": "桜上水",
         "area_block": "23区都心部"
     },
     "24": {
-        "area_name": "清瀬市",
+        "area_name": "桜新町",
         "area_block": "多摩北部"
     },
     "25": {
-        "area_name": "東大和市",
+        "area_name": "三軒茶屋",
         "area_block": "多摩北部"
     },
     "26": {
-        "area_name": "東村山市",
+        "area_name": "三宿",
         "area_block": "多摩北部"
     },
     "27": {
-        "area_name": "東久留米市",
+        "area_name": "上北沢",
         "area_block": "多摩北部"
     },
     "28": {
-        "area_name": "小平市",
+        "area_name": "上野毛",
         "area_block": "多摩北部"
     },
     "29": {
-        "area_name": "西東京市",
+        "area_name": "上用賀",
         "area_block": "多摩北部"
     },
     "30": {
-        "area_name": "国分寺市",
+        "area_name": "新町",
         "area_block": "多摩北部"
     },
     "31": {
-        "area_name": "小金井市",
+        "area_name": "深沢",
         "area_block": "多摩北部"
     },
     "32": {
-        "area_name": "武蔵野市",
+        "area_name": "世田谷",
         "area_block": "多摩北部"
     },
     "33": {
-        "area_name": "武蔵村山市",
+        "area_name": "瀬田",
         "area_block": "多摩北部"
     },
     "34": {
-        "area_name": "国立市",
+        "area_name": "成城",
         "area_block": "多摩南部"
     },
     "35": {
-        "area_name": "三鷹市",
+        "area_name": "赤堤",
         "area_block": "多摩南部"
     },
     "36": {
-        "area_name": "調布市",
+        "area_name": "千歳台",
         "area_block": "多摩南部"
     },
     "37": {
-        "area_name": "狛江市",
+        "area_name": "船橋",
         "area_block": "多摩南部"
     },
     "38": {
-        "area_name": "稲城市",
+        "area_name": "祖師谷",
         "area_block": "多摩南部"
     },
     "39": {
-        "area_name": "町田市",
+        "area_name": "太子堂",
         "area_block": "多摩南部"
     },
     "40": {
-        "area_name": "多摩市",
+        "area_name": "代沢",
         "area_block": "多摩南部"
     },
     "41": {
-        "area_name": "府中市",
+        "area_name": "代田",
         "area_block": "多摩南部"
     },
     "42": {
-        "area_name": "日野市",
+        "area_name": "大原",
         "area_block": "多摩南部"
     },
     "43": {
-        "area_name": "立川市",
+        "area_name": "大蔵",
         "area_block": "多摩南部"
     },
     "44": {
-        "area_name": "八王子市",
+        "area_name": "池尻",
         "area_block": "多摩西部"
     },
     "45": {
-        "area_name": "青梅市",
+        "area_name": "中町",
         "area_block": "多摩西部"
     },
     "46": {
-        "area_name": "福生市",
+        "area_name": "東玉川",
         "area_block": "多摩西部"
     },
     "47": {
-        "area_name": "羽村市",
+        "area_name": "等々力",
         "area_block": "多摩西部"
     },
     "48": {
-        "area_name": "あきる野市",
+        "area_name": "南烏山",
         "area_block": "多摩西部"
     },
     "49": {
-        "area_name": "瑞穂町",
+        "area_name": "梅丘",
         "area_block": "多摩西部"
     },
     "50": {
-        "area_name": "日の出町",
+        "area_name": "粕谷",
         "area_block": "多摩西部"
     },
     "51": {
-        "area_name": "奥多摩町",
+        "area_name": "八幡山",
         "area_block": "多摩西部"
     },
     "52": {
-        "area_name": "昭島市",
+        "area_name": "尾山台",
         "area_block": "多摩西部"
     },
     "53": {
-        "area_name": "大島町",
+        "area_name": "北烏山",
         "area_block": "島しょ部"
     },
     "54": {
-        "area_name": "利島村",
+        "area_name": "北沢",
         "area_block": "島しょ部"
     },
     "55": {
-        "area_name": "新島村",
+        "area_name": "野沢",
         "area_block": "島しょ部"
     },
     "56": {
-        "area_name": "神津島村",
+        "area_name": "野毛",
         "area_block": "島しょ部"
     },
     "57": {
-        "area_name": "三宅村",
-        "area_block": "島しょ部"
-    },
-    "58": {
-        "area_name": "御蔵島村",
-        "area_block": "島しょ部"
-    },
-    "59": {
-        "area_name": "青ヶ島村",
-        "area_block": "島しょ部"
-    },
-    "60": {
-        "area_name": "八丈町",
-        "area_block": "島しょ部"
-    },
-    "61": {
-        "area_name": "檜原村",
-        "area_block": "多摩西部"
-    },
-    "62": {
-        "area_name": "小笠原村",
+        "area_name": "用賀",
         "area_block": "島しょ部"
     }
 }
