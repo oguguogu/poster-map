@@ -226,5 +226,21 @@
     "57": {
         "area_name": "用賀",
         "area_block": "島しょ部"
+    },
+    "58": {
+        "area_name": "若林",
+        "area_block": "23区都心部"
+    },
+    "59": {
+        "area_name": "松原",
+        "area_block": "多摩北部"
+    },
+    "60": {
+        "area_name": "上祖師ヶ谷",
+        "area_block": "多摩北部"
+    },
+    "61": {
+        "area_name": "上馬",
+        "area_block": "多摩北部"
     }
 }
