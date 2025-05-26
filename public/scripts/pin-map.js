@@ -35,9 +35,9 @@ function getStatusText(status) {
 function getStatusColor(status) {
 switch (status) {
   case 0:
-    return '#0288D1';
+    return '#333333';
   case 1:
-    return '#FFD600';
+    return '#6E126F';
   case 2:
     return '#E65100';
   case 3:
