@@ -1,4 +1,4 @@
-const map = L.map("map").setView([35.6368549, 139.533389], 12);
+const map = L.map("map").setView([0, 0], 12);
 
 // 背景地図はOpenStreetMap
 const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
