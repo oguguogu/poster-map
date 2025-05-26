@@ -1,4 +1,4 @@
-const INITIAL_CENTER = [0, 0];
+const INITIAL_CENTER = [35.6368549, 139.633389];
 const INITIAL_ZOOM = 12;
 
 const map = L.map("map").setView(INITIAL_CENTER, INITIAL_ZOOM);
