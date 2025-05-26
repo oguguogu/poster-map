@@ -1,4 +1,7 @@
-const map = L.map("map").setView([0, 0], 12);
+const INITIAL_CENTER = [35.6368549, 139.533389];
+const INITIAL_ZOOM = 12;
+
+const map = L.map("map").setView(INITIAL_CENTER, INITIAL_ZOOM);
 
 // 背景地図はOpenStreetMap
 const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -106,6 +109,8 @@ Promise.all([getAreaList(), getProgress(), getProgressCountdown()]).then(functio
   progressBox((progress['total']*100).toFixed(2), 'topright').addTo(map)
   progressBoxCountdown((parseInt(progressCountdown['total'])), 'topright').addTo(map)
   legend().addTo(map);
+  // ⭐ ここで地図の中心位置を再設定
+  map.setView(INITIAL_CENTER, INITIAL_ZOOM);
 }).catch((error) => {
   console.error('Error in fetching data:', error);
 });
