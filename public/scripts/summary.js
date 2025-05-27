@@ -89,7 +89,7 @@ Promise.all([getAreaList(), getProgress(), getProgressCountdown()])
     progressCountdown = res[2];
 
     // 🌍 setagaya_town.geojson を一括読み込み
-    fetch("data/Setagaya Town.geojson")
+    fetch("data/setagaya_town.geojson")
       .then(response => response.json())
       .then(fullGeoJson => {
         for (let [key, areaInfo] of Object.entries(areaList)) {
