@@ -81,36 +81,108 @@ function getGeoJsonStyle(progress) {
 let areaList;
 let progress;
 
-Promise.all([getAreaList(), getProgress(), getProgressCountdown()]).then(function(res) {
-  areaList = res[0];
-  progress = res[1];
-  progressCountdown = res[2];
 
-  for (let [key, areaInfo] of Object.entries(areaList)) {
-    console.log(areaInfo['area_name']);
-    fetch(`https://uedayou.net/loa/東京都世田谷区${areaInfo['area_name']}.geojson`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to fetch geojson for ${areaInfo['area_name']}`);
+Promise.all([getAreaList(), getProgress(), getProgressCountdown()])
+  .then(function(res) {
+    areaList = res[0];
+    progress = res[1];
+    progressCountdown = res[2];
+
+    // 🌍 setagaya_town.geojson を一括読み込み
+    fetch("data/Setagaya Town.geojson")
+      .then(response => response.json())
+      .then(fullGeoJson => {
+        for (let [key, areaInfo] of Object.entries(areaList)) {
+          const areaName = areaInfo["area_name"];
+
+          // 📌 町名に一致するFeatureを検索
+          const feature = fullGeoJson.features.find(
+            f => f.properties["町名"] === areaName
+          );
+
+          if (!feature) {
+            console.warn(`GeoJSONに町名 ${areaName} が見つかりません`);
+            continue;
+          }
+
+          const polygon = L.geoJSON(feature, {
+            style: getGeoJsonStyle(progress[key]),
+          });
+
+          polygon.bindPopup(`
+            <b>${areaName}</b><br>
+            ポスター貼り進捗: ${(progress[key]*100).toFixed(1)}%<br>
+            残り: ${progressCountdown[key]}ヶ所
+          `);
+
+          polygon.addTo(map);
         }
-        return response.json();
+
+        // 全体表示・凡例など
+        progressBox((progress['total']*100).toFixed(2), 'topright').addTo(map);
+        progressBoxCountdown((parseInt(progressCountdown['total'])), 'topright').addTo(map);
+        legend().addTo(map);
+        map.setView(INITIAL_CENTER, INITIAL_ZOOM);
       })
-      .then((data) => {
-        const polygon = L.geoJSON(data, {
-          style: getGeoJsonStyle(progress[key]),
-        });
-        polygon.bindPopup(`<b>${areaInfo['area_name']}</b><br>ポスター貼り進捗: ${(progress[key]*100).toFixed(1)}%<br>残り: ${progressCountdown[key]}ヶ所`);
-        polygon.addTo(map);
-      })
-      .catch((error) => {
-        console.error('Error fetching geojson:', error);
+      .catch(error => {
+        console.error("GeoJSON読み込みエラー:", error);
       });
-  }
-  progressBox((progress['total']*100).toFixed(2), 'topright').addTo(map)
-  progressBoxCountdown((parseInt(progressCountdown['total'])), 'topright').addTo(map)
-  legend().addTo(map);
-  // ⭐ ここで地図の中心位置を再設定
-  map.setView(INITIAL_CENTER, INITIAL_ZOOM);
-}).catch((error) => {
-  console.error('Error in fetching data:', error);
-});
+  })
+  .catch(error => {
+    console.error("初期データ取得エラー:", error);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Promise.all([getAreaList(), getProgress(), getProgressCountdown()]).then(function(res) {
+//   areaList = res[0];
+//   progress = res[1];
+//   progressCountdown = res[2];
+
+
+
+//   // for (let [key, areaInfo] of Object.entries(areaList)) {
+//   //   console.log(areaInfo['area_name']);
+//   //   fetch(`https://uedayou.net/loa/東京都世田谷区${areaInfo['area_name']}.geojson`)
+//   //     .then((response) => {
+//   //       if (!response.ok) {
+//   //         throw new Error(`Failed to fetch geojson for ${areaInfo['area_name']}`);
+//   //       }
+//   //       return response.json();
+//   //     })
+//   //     .then((data) => {
+//   //       const polygon = L.geoJSON(data, {
+//   //         style: getGeoJsonStyle(progress[key]),
+//   //       });
+//   //       polygon.bindPopup(`<b>${areaInfo['area_name']}</b><br>ポスター貼り進捗: ${(progress[key]*100).toFixed(1)}%<br>残り: ${progressCountdown[key]}ヶ所`);
+//   //       polygon.addTo(map);
+//   //     })
+//   //     .catch((error) => {
+//   //       console.error('Error fetching geojson:', error);
+//   //     });
+//   // }
+//   progressBox((progress['total']*100).toFixed(2), 'topright').addTo(map);
+//   progressBoxCountdown((parseInt(progressCountdown['total'])), 'topright').addTo(map);
+//   legend().addTo(map);
+//   // ⭐ ここで地図の中心位置を再設定
+//   map.setView(INITIAL_CENTER, INITIAL_ZOOM);
+// }).catch((error) => {
+//   console.error('Error in fetching data:', error);
+// });
