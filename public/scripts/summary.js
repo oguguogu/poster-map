@@ -106,13 +106,13 @@ Promise.all([getAreaList(), getProgress(), getProgressCountdown()])
           }
 
           const polygon = L.geoJSON(feature, {
-            style: getGeoJsonStyle(progress[key]),//key
+            style: getGeoJsonStyle(progress[key.toString()]),//key
           });
 
           polygon.bindPopup(`
             <b>${areaName}</b><br>
-            ポスター貼り進捗: ${(progress[key]*100).toFixed(1)}%<br> 
-            残り: ${progressCountdown[key]}ヶ所
+            ポスター貼り進捗: ${(progress[key.toString()]*100).toFixed(1)}%<br> 
+            残り: ${progressCountdown[key.toString()]}ヶ所
           `);// key
 
           polygon.addTo(map);
