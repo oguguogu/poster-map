@@ -1,15 +1,15 @@
 function getBlockFromUrlParam() {
-  const params = new URL(document.location.href).searchParams
-  const block = params.get("block")
-  console.log(block)
-  return block
+  const params = new URL(document.location.href).searchParams;
+  const block = params.get("block");
+  console.log(block);
+  return block;
 }
 
 function getSmallBlockFromUrlParam() {
-  const params = new URL(document.location.href).searchParams
-  const smallBlock = params.get("sb")
-  console.log(smallBlock)
-  return smallBlock
+  const params = new URL(document.location.href).searchParams;
+  const smallBlock = params.get("sb");
+  console.log(smallBlock);
+  return smallBlock;
 }
 
 function findKeyByAreaName(data, areaName) {
@@ -22,181 +22,219 @@ function findKeyByAreaName(data, areaName) {
 }
 
 function filterDataByAreaIdAndSmallBlock(data, areaId, smallBlockId) {
-  return data.filter(item => {
-      return item.area_id === areaId && item.name.split('-')[0] === String(smallBlockId);
+  return data.filter((item) => {
+    return (
+      item.area_id === areaId &&
+      item.name.split("-")[0] === String(smallBlockId)
+    );
   });
 }
 
 function getStatusText(status) {
-  statusDict = {0: "未", 1: "完了", 2: "異常", 3: "予約", 4: "要確認", 5: "異常対応中", 6: "削除"}
-  return statusDict[status]
+  statusDict = {
+    0: "未",
+    1: "完了",
+    2: "異常",
+    3: "予約",
+    4: "要確認",
+    5: "異常対応中",
+    6: "削除",
+  };
+  return statusDict[status];
 }
 
 function getStatusColor(status) {
-switch (status) {
-  case 0:
-    return '#dcdcdc';
-  case 1:
-    return '#6E126F';
-  case 2:
-    return '#E65100';
-  case 3:
-    return '#0F9D58';
-  case 4:
-    return '#FF9706';
-  case 5:
-    return '#9106E9';
-  case 6:
-    return '#FFD600';
-  default:
-    return '#0288D1';
-}
+  switch (status) {
+    case 0:
+      return "#dcdcdc";
+    case 1:
+      return "#6E126F";
+    case 2:
+      return "#E65100";
+    case 3:
+      return "#0F9D58";
+    case 4:
+      return "#FF9706";
+    case 5:
+      return "#9106E9";
+    case 6:
+      return "#FFD600";
+    default:
+      return "#0288D1";
+  }
 }
 
 function getPinNote(note) {
   if (note == null) {
-    return "なし"
+    return "なし";
   } else {
-    return note
+    return note;
   }
 }
 
-async function loadBoardPins(pins, layer, status=null) {
+async function loadBoardPins(pins, layer, status = null) {
   const areaList = await getAreaList();
   if (status != null) {
-    pins = pins.filter(item => item.status == status);
+    pins = pins.filter((item) => item.status == status);
   }
-  pins.forEach(pin => {
+  pins.forEach((pin) => {
     var marker = L.circleMarker([pin.lat, pin.long], {
       radius: 8,
-      color: 'black',
+      color: "black",
       weight: 1,
       fillColor: `${getStatusColor(pin.status)}`,
       fillOpacity: 0.9,
       border: 1,
-    })
-    .addTo(layer);
-    marker.bindPopup(`<b>${areaList[pin.area_id]["area_name"]} ${pin.name}</b><br>ステータス: ${getStatusText(pin.status)}<br>備考: ${getPinNote(pin.note)}<br>座標: <a href="https://www.google.com/maps/search/${pin.lat},+${pin.long}" target="_blank" rel="noopener noreferrer">(${pin.lat}, ${pin.long})</a>`);
+    }).addTo(layer);
+    marker.bindPopup(
+      `<b>${areaList[pin.area_id]["area_name"]} ${
+        pin.name
+      }</b><br>ステータス: ${getStatusText(pin.status)}<br>備考: ${getPinNote(
+        pin.note
+      )}<br>座標: <a href="https://www.google.com/maps/search/${pin.lat},+${
+        pin.long
+      }" target="_blank" rel="noopener noreferrer">(${pin.lat}, ${
+        pin.long
+      })</a>`
+    );
   });
 }
 
 function onLocationFound(e) {
   const radius = e.accuracy / 2;
 
-  const locationMarker = L.marker(e.latlng).addTo(map)
-    .bindPopup("現在地").openPopup();
+  const locationMarker = L.marker(e.latlng)
+    .addTo(map)
+    .bindPopup("現在地")
+    .openPopup();
   const locationCircle = L.circle(e.latlng, radius).addTo(map);
 
   map.setView(e.latlng, 14);
 }
 
-
 function onLocationError(e) {
   // alert(e.message);
   const mapConfig = {
-    '23-east': {
-      'lat': 35.7266074,
-      'long': 139.8292152,
-      'zoom': 14,
+    "23-east": {
+      lat: 35.7266074,
+      long: 139.8292152,
+      zoom: 14,
     },
-    '23-west': {
-      'lat': 35.6861171,
-      'long': 139.6490942,
-      'zoom': 13,
+    "23-west": {
+      lat: 35.6861171,
+      long: 139.6490942,
+      zoom: 13,
     },
-    '23-city': {
-      'lat': 35.6916896,
-      'long': 139.7254559,
-      'zoom': 14,
+    "23-city": {
+      lat: 35.6916896,
+      long: 139.7254559,
+      zoom: 14,
     },
-    'tama-north': {
-      'lat': 35.731028, 
-      'long': 139.481822,
-      'zoom': 13,
+    "tama-north": {
+      lat: 35.731028,
+      long: 139.481822,
+      zoom: 13,
     },
-    'tama-south': {
-      'lat': 35.6229399,
-      'long': 139.4584664,
-      'zoom': 13,
+    "tama-south": {
+      lat: 35.6229399,
+      long: 139.4584664,
+      zoom: 13,
     },
-    'tama-west': {
-      'lat': 35.7097579, 
-      'long': 139.2904051,
-      'zoom': 12,
+    "tama-west": {
+      lat: 35.7097579,
+      long: 139.2904051,
+      zoom: 12,
     },
-    'island': {
-      'lat': 34.5291416,
-      'long': 139.2819004,
-      'zoom': 11,
+    island: {
+      lat: 34.5291416,
+      long: 139.2819004,
+      zoom: 11,
     },
-  }
-  const block = getBlockFromUrlParam()
+  };
+  const block = getBlockFromUrlParam();
   let latlong, zoom;
   if (block == null) {
-    latlong = [35.6988862, 139.4649636],
-    zoom = 11
+    (latlong = [35.6988862, 139.4649636]), (zoom = 11);
   } else {
-    latlong = [mapConfig[block]['lat'], mapConfig[block]['long']]
-    zoom = mapConfig[block]['zoom']
+    latlong = [mapConfig[block]["lat"], mapConfig[block]["long"]];
+    zoom = mapConfig[block]["zoom"];
   }
   map.setView(latlong, zoom);
 }
 
 const baseLayers = {
-  'OpenStreetMap': osm,
-  'Google Map': googleMap,
-  '国土地理院地図': japanBaseMap,
+  OpenStreetMap: osm,
+  "Google Map": googleMap,
+  国土地理院地図: japanBaseMap,
 };
 
 const overlays = {
-  '未':  L.layerGroup(),
-  '完了':  L.layerGroup(),
-  '異常':  L.layerGroup(),
-  '要確認':  L.layerGroup(),
-  '異常対応中':  L.layerGroup(),
-  '削除':  L.layerGroup(),
-  '期日前投票所':  L.layerGroup(),
+  未: L.layerGroup(),
+  完了: L.layerGroup(),
+  異常: L.layerGroup(),
+  要確認: L.layerGroup(),
+  異常対応中: L.layerGroup(),
+  削除: L.layerGroup(),
+  期日前投票所: L.layerGroup(),
 };
 
-var map = L.map('map', {
+var map = L.map("map", {
   layers: [
-    overlays['未'],
-    overlays['完了'],
-    overlays['要確認'],
-    overlays['異常'],
-    overlays['異常対応中'],
-    overlays['削除'],
-    overlays['期日前投票所']
+    overlays["未"],
+    overlays["完了"],
+    overlays["要確認"],
+    overlays["異常"],
+    overlays["異常対応中"],
+    overlays["削除"],
+    overlays["期日前投票所"],
   ],
-  preferCanvas:true,
+  preferCanvas: true,
 });
 japanBaseMap.addTo(map);
 const layerControl = L.control.layers(baseLayers, overlays).addTo(map);
 
-map.on('locationfound', onLocationFound);
-map.on('locationerror', onLocationError);
-map.locate({setView: false, maxZoom: 14});
+map.on("locationfound", onLocationFound);
+map.on("locationerror", onLocationError);
+map.locate({ setView: false, maxZoom: 14 });
 
-const block = getBlockFromUrlParam()
-const smallBlock= getSmallBlockFromUrlParam()
+const block = getBlockFromUrlParam();
+const smallBlock = getSmallBlockFromUrlParam();
 let allBoardPins;
-getBoardPins(block, smallBlock).then(function(pins) {
-  allBoardPins = pins
-  loadBoardPins(allBoardPins, overlays['削除'], 6);
-  loadBoardPins(allBoardPins, overlays['完了'], 1);
-  loadBoardPins(allBoardPins, overlays['異常'], 2);
-  loadBoardPins(allBoardPins, overlays['要確認'], 4);
-  loadBoardPins(allBoardPins, overlays['異常対応中'], 5);
-  loadBoardPins(allBoardPins, overlays['未'], 0);
+getBoardPins(block, smallBlock).then(function (pins) {
+  allBoardPins = pins;
+  loadBoardPins(allBoardPins, overlays["削除"], 6);
+  loadBoardPins(allBoardPins, overlays["完了"], 1);
+  loadBoardPins(allBoardPins, overlays["異常"], 2);
+  loadBoardPins(allBoardPins, overlays["要確認"], 4);
+  loadBoardPins(allBoardPins, overlays["異常対応中"], 5);
+  loadBoardPins(allBoardPins, overlays["未"], 0);
 });
 
-Promise.all([getProgress(), getProgressCountdown()]).then(function(res) {
-  progress = res[0];
-  progressCountdown = res[1];
-  progressBox((progress['total']*100).toFixed(2), 'topleft').addTo(map)
-  progressBoxCountdown((parseInt(progressCountdown['total'])), 'topleft').addTo(map)
-}).catch((error) => {
-  console.error('Error in fetching data:', error);
-});
+fetch(`https://uedayou.net/loa/東京都世田谷区${areaInfo["area_name"]}.geojson`)
+  .then((response) => response.json())
+  .then((data) => {
+    const geoJsonLayer = L.geoJSON(data, {
+      style: function (feature) {
+        return { color: "black", weight: 1, fillOpacity: 0 };
+      },
+    });
+    overlays["町境"] = geoJsonLayer;
+    geoJsonLayer.addTo(map); // Add to map by default
+    layerControl.addOverlay(geoJsonLayer, "町境"); // Add to layer control
+  })
+  .catch((error) => console.error("Error loading GeoJSON data:", error));
 
-loadVoteVenuePins(overlays['期日前投票所']);
+Promise.all([getProgress(), getProgressCountdown()])
+  .then(function (res) {
+    progress = res[0];
+    progressCountdown = res[1];
+    progressBox((progress["total"] * 100).toFixed(2), "topleft").addTo(map);
+    progressBoxCountdown(parseInt(progressCountdown["total"]), "topleft").addTo(
+      map
+    );
+  })
+  .catch((error) => {
+    console.error("Error in fetching data:", error);
+  });
+
+loadVoteVenuePins(overlays["期日前投票所"]);
