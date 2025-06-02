@@ -210,41 +210,42 @@ getBoardPins(block, smallBlock).then(function (pins) {
   loadBoardPins(allBoardPins, overlays["未"], 0);
 });
 
-getAreaList().then((areaList) => {
-  const block = getBlockFromUrlParam();
-  const areaKey = block ? block : null;
+fetch("data/arealist.json")
+  .then((res) => res.json())
+  .then((areaList) => {
+    for (const key in areaList) {
+      const areaName = areaList[key].area_name;
 
-  if (!areaKey || !(areaKey in areaList)) {
-    console.warn("指定された block が areaList に存在しません。");
-    return;
-  }
+      const url = `https://uedayou.net/loa/東京都世田谷区${areaName}.geojson`;
 
-  const areaName = areaList[areaKey].area_name;
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`GeoJSONの取得失敗: ${areaName}`);
+          }
+          return response.json();
+        })
+        .then((geojsonData) => {
+          const polygon = L.geoJSON(geojsonData, {
+            style: {
+              color: "black",
+              weight: 2,
+              fillColor: "#ffa", // 任意
+              fillOpacity: 0.4,
+            },
+          });
 
-  fetch(`https://uedayou.net/loa/東京都世田谷区${areaName}.geojson`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`GeoJSONの取得に失敗しました: 東京都${areaName}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const polygon = L.geoJSON(data, {
-        style: getGeoJsonStyle(progress[areaKey] ?? 0),
-      });
-
-      polygon.bindPopup(
-        `<b>${areaName}</b><br>ポスター貼り進捗: ${
-          (progress[areaKey] ?? 0) * 100
-        }%<br>残り: ${progressCountdown[areaKey] ?? "不明"}ヶ所`
-      );
-
-      polygon.addTo(map);
-    })
-    .catch((error) => {
-      console.error("GeoJSONの取得エラー:", error);
-    });
-});
+          polygon.bindPopup(`<b>${areaName}</b>`);
+          polygon.addTo(map);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  })
+  .catch((error) => {
+    console.error("arealist.json の読み込みに失敗しました:", error);
+  });
 
 Promise.all([getProgress(), getProgressCountdown()])
   .then(function (res) {
