@@ -78,19 +78,21 @@ GPL-3.0 の条項に基づき、改変内容の明示、ソースコードの公
 
 ## 謝辞
 
-本プロジェクトの構築にあたり、以下の技術・ライブラリ・公開データを利用させていただきました。
+本プロジェクトの構築にあたり、以下の技術・ライブラリ・公開データを利用させていただきました。  
 優れたソフトウェアやデータを公開・提供してくださっている開発者・関係者の皆様に、心より感謝申し上げます。
 
-- [Leaflet](https://leafletjs.com/)
-  └ 地図描画およびインタラクションに使用
+- [poster-map（安野たかひろ選挙掲示板マップ）](https://github.com/takahiroanno2024/poster-map)  
+  （本プロジェクトのベースとなったオープンソース）
 
-- [Linked Open Addresses Japan (LOAJ)](https://uedayou.net/loa/)
-  └ `/summary` ページにて、各市区町村のポリゴンデータを可視化に使用
+- [Leaflet](https://leafletjs.com/)（地図描画およびインタラクション）
 
-- [OpenStreetMap](https://www.openstreetmap.org/),
-  [国土地理院 地図](https://maps.gsi.go.jp/),
-  [Google Maps](https://www.google.com/maps)
-  └ ベースマップとして利用
+- [Linked Open Addresses Japan (LOAJ)](https://uedayou.net/loa/)  
+  （`/summary` ページにて、市区町村ポリゴンデータの可視化に使用）
+
+- [OpenStreetMap](https://www.openstreetmap.org/),  
+  [国土地理院 地図](https://maps.gsi.go.jp/),  
+  [Google Maps](https://www.google.com/maps)  
+  （ベースマップとして使用）
 
 ```
 
