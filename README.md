@@ -70,7 +70,7 @@ bash main.sh  # cron等で定期実行
 本リポジトリに含まれるソースコードおよび関連ファイルは、
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)（GPL-3.0）に基づいて公開されています。
 
-本プロジェクトは、[poster-map](https://github.com/takahiroanno2024/poster-map) をベースに、
+本プロジェクトは、安野貴博氏の[poster-map](https://github.com/takahiroanno2024/poster-map) をベースに、
 鳥海彩後援会が地域・用途に合わせて改変したものであり、改変後のコードも同じ GPL-3.0 ライセンスのもとで再配布されます。
 
 GPL-3.0 の条項に基づき、改変内容の明示、ソースコードの公開、再配布の自由が保障されるとともに、
