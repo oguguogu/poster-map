@@ -197,42 +197,42 @@ map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
 map.locate({ setView: false, maxZoom: 14 });
 
-fetch("/data/arealist.json")
-  .then((res) => res.json())
-  .then((areaList) => {
-    for (const key in areaList) {
-      const areaName = areaList[key].area_name;
+// fetch("/data/arealist.json")
+//   .then((res) => res.json())
+//   .then((areaList) => {
+//     for (const key in areaList) {
+//       const areaName = areaList[key].area_name;
 
-      const url = `https://uedayou.net/loa/東京都世田谷区${areaName}.geojson`;
+//       const url = `https://uedayou.net/loa/東京都世田谷区${areaName}.geojson`;
 
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`GeoJSONの取得失敗: ${areaName}`);
-          }
-          return response.json();
-        })
-        .then((geojsonData) => {
-          const polygon = L.geoJSON(geojsonData, {
-            style: {
-              color: "black",
-              weight: 2,
-              fillColor: "#ffa", // 任意
-              fillOpacity: 0.4,
-            },
-          });
+//       fetch(url)
+//         .then((response) => {
+//           if (!response.ok) {
+//             throw new Error(`GeoJSONの取得失敗: ${areaName}`);
+//           }
+//           return response.json();
+//         })
+//         .then((geojsonData) => {
+//           const polygon = L.geoJSON(geojsonData, {
+//             style: {
+//               color: "black",
+//               weight: 2,
+//               fillColor: "#ffa", // 任意
+//               fillOpacity: 0.4,
+//             },
+//           });
 
-          polygon.bindPopup(`<b>${areaName}</b>`);
-          polygon.addTo(map);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  })
-  .catch((error) => {
-    console.error("arealist.json の読み込みに失敗しました:", error);
-  });
+//           polygon.bindPopup(`<b>${areaName}</b>`);
+//           polygon.addTo(map);
+//         })
+//         .catch((error) => {
+//           console.error(error);
+//         });
+//     }
+//   })
+//   .catch((error) => {
+//     console.error("arealist.json の読み込みに失敗しました:", error);
+//   });
 
 const block = getBlockFromUrlParam();
 const smallBlock = getSmallBlockFromUrlParam();
