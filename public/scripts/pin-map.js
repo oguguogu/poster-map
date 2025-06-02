@@ -210,7 +210,7 @@ getBoardPins(block, smallBlock).then(function (pins) {
   loadBoardPins(allBoardPins, overlays["未"], 0);
 });
 
-fetch("data/arealist.json")
+fetch("/data/arealist.json")
   .then((res) => res.json())
   .then((areaList) => {
     for (const key in areaList) {
