@@ -197,19 +197,6 @@ map.on("locationfound", onLocationFound);
 map.on("locationerror", onLocationError);
 map.locate({ setView: false, maxZoom: 14 });
 
-const block = getBlockFromUrlParam();
-const smallBlock = getSmallBlockFromUrlParam();
-let allBoardPins;
-getBoardPins(block, smallBlock).then(function (pins) {
-  allBoardPins = pins;
-  loadBoardPins(allBoardPins, overlays["削除"], 6);
-  loadBoardPins(allBoardPins, overlays["完了"], 1);
-  loadBoardPins(allBoardPins, overlays["異常"], 2);
-  loadBoardPins(allBoardPins, overlays["要確認"], 4);
-  loadBoardPins(allBoardPins, overlays["異常対応中"], 5);
-  loadBoardPins(allBoardPins, overlays["未"], 0);
-});
-
 fetch("/data/arealist.json")
   .then((res) => res.json())
   .then((areaList) => {
@@ -246,6 +233,19 @@ fetch("/data/arealist.json")
   .catch((error) => {
     console.error("arealist.json の読み込みに失敗しました:", error);
   });
+
+const block = getBlockFromUrlParam();
+const smallBlock = getSmallBlockFromUrlParam();
+let allBoardPins;
+getBoardPins(block, smallBlock).then(function (pins) {
+  allBoardPins = pins;
+  loadBoardPins(allBoardPins, overlays["削除"], 6);
+  loadBoardPins(allBoardPins, overlays["完了"], 1);
+  loadBoardPins(allBoardPins, overlays["異常"], 2);
+  loadBoardPins(allBoardPins, overlays["要確認"], 4);
+  loadBoardPins(allBoardPins, overlays["異常対応中"], 5);
+  loadBoardPins(allBoardPins, overlays["未"], 0);
+});
 
 Promise.all([getProgress(), getProgressCountdown()])
   .then(function (res) {
