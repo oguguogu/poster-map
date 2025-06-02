@@ -1,7 +1,7 @@
 # 世田谷区ポスターマップ（鳥海彩後援会版）
 
 > 本プロジェクトは [poster-map](https://github.com/takahiroanno2024/poster-map) をベースに、  
-> **鳥海彩後援会** によって **世田谷区選挙向け**に機能・データを調整した fork 版です。  
+> **鳥海彩後援会** によって **世田谷選挙区向け**に機能・データを調整した fork 版です。  
 > オリジナルの README 内容の一部を引用していますが、**対象地域や運用目的が異なる**点にご注意ください。
 
 ---
@@ -63,6 +63,7 @@
 python csv2json_small.py data/all.csv public/data/
 python summarize_progress.py public/data/
 bash main.sh  # cron等で定期実行
+```
 
 ## ライセンスについて
 
@@ -70,9 +71,9 @@ bash main.sh  # cron等で定期実行
 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)（GPL-3.0）に基づいて公開されています。
 
 本プロジェクトは、[poster-map](https://github.com/takahiroanno2024/poster-map) をベースに、
-鳥海彩後援会が地域・用途に合わせて改変したものであり、改変後のコードも同じGPL-3.0ライセンスのもとで再配布されます。
+鳥海彩後援会が地域・用途に合わせて改変したものであり、改変後のコードも同じ GPL-3.0 ライセンスのもとで再配布されます。
 
-GPL-3.0の条項に基づき、改変内容の明示、ソースコードの公開、再配布の自由が保障されるとともに、
+GPL-3.0 の条項に基づき、改変内容の明示、ソースコードの公開、再配布の自由が保障されるとともに、
 他の利用者にも同等の自由が継承されることを目的としています。
 
 ## 謝辞
@@ -90,5 +91,7 @@ GPL-3.0の条項に基づき、改変内容の明示、ソースコードの公�
   [国土地理院 地図](https://maps.gsi.go.jp/),
   [Google Maps](https://www.google.com/maps)
   └ ベースマップとして利用
+
+```
 
 ```
