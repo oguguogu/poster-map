@@ -210,19 +210,41 @@ getBoardPins(block, smallBlock).then(function (pins) {
   loadBoardPins(allBoardPins, overlays["未"], 0);
 });
 
-fetch(`https://uedayou.net/loa/東京都世田谷区${areaInfo["area_name"]}.geojson`)
-  .then((response) => response.json())
-  .then((data) => {
-    const geoJsonLayer = L.geoJSON(data, {
-      style: function (feature) {
-        return { color: "black", weight: 1, fillOpacity: 0 };
-      },
+getAreaList().then((areaList) => {
+  const block = getBlockFromUrlParam();
+  const areaKey = block ? block : null;
+
+  if (!areaKey || !(areaKey in areaList)) {
+    console.warn("指定された block が areaList に存在しません。");
+    return;
+  }
+
+  const areaName = areaList[areaKey].area_name;
+
+  fetch(`https://uedayou.net/loa/東京都世田谷区${areaName}.geojson`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`GeoJSONの取得に失敗しました: 東京都${areaName}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const polygon = L.geoJSON(data, {
+        style: getGeoJsonStyle(progress[areaKey] ?? 0),
+      });
+
+      polygon.bindPopup(
+        `<b>${areaName}</b><br>ポスター貼り進捗: ${
+          (progress[areaKey] ?? 0) * 100
+        }%<br>残り: ${progressCountdown[areaKey] ?? "不明"}ヶ所`
+      );
+
+      polygon.addTo(map);
+    })
+    .catch((error) => {
+      console.error("GeoJSONの取得エラー:", error);
     });
-    overlays["町境"] = geoJsonLayer;
-    geoJsonLayer.addTo(map); // Add to map by default
-    layerControl.addOverlay(geoJsonLayer, "町境"); // Add to layer control
-  })
-  .catch((error) => console.error("Error loading GeoJSON data:", error));
+});
 
 Promise.all([getProgress(), getProgressCountdown()])
   .then(function (res) {
