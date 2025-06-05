@@ -106,10 +106,10 @@ async function loadBoardPins(pins, layer, status = null) {
     // );
     marker.bindPopup(
       `<b>${areaList[pin.area_id]["area_name"]} ${pin.name}</b><br>
-  設置場所: ${pin.location}<br>
-  ステータス: ${getStatusText(pin.status)}<br>
-  備考: ${getPinNote(pin.note)}<br>
-  座標: <a href="https://www.google.com/maps/search/${pin.lat},+${
+    設置場所: ${pin.location}<br>
+    ステータス: ${getStatusText(pin.status)}<br>
+    備考: ${getPinNote(pin.note)}<br>
+    座標: <a href="https://www.google.com/maps/search/${pin.lat},+${
         pin.long
       }" target="_blank" rel="noopener noreferrer">(${pin.lat}, ${
         pin.long
