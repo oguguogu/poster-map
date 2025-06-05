@@ -93,12 +93,23 @@ async function loadBoardPins(pins, layer, status = null) {
       fillOpacity: 0.9,
       border: 1,
     }).addTo(layer);
+    // marker.bindPopup(
+    //   `<b>${areaList[pin.area_id]["area_name"]} ${
+    //     pin.name
+    //   }</b><br>ステータス: ${getStatusText(pin.status)}<br>備考: ${getPinNote(
+    //     pin.note
+    //   )}<br>座標: <a href="https://www.google.com/maps/search/${pin.lat},+${
+    //     pin.long
+    //   }" target="_blank" rel="noopener noreferrer">(${pin.lat}, ${
+    //     pin.long
+    //   })</a>`
+    // );
     marker.bindPopup(
-      `<b>${areaList[pin.area_id]["area_name"]} ${
-        pin.name
-      }</b><br>ステータス: ${getStatusText(pin.status)}<br>備考: ${getPinNote(
-        pin.note
-      )}<br>座標: <a href="https://www.google.com/maps/search/${pin.lat},+${
+      `<b>${areaList[pin.area_id]["area_name"]} ${pin.name}</b><br>
+  設置場所: ${pin.location}<br>
+  ステータス: ${getStatusText(pin.status)}<br>
+  備考: ${getPinNote(pin.note)}<br>
+  座標: <a href="https://www.google.com/maps/search/${pin.lat},+${
         pin.long
       }" target="_blank" rel="noopener noreferrer">(${pin.lat}, ${
         pin.long
